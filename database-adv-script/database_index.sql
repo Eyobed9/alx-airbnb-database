@@ -1,3 +1,11 @@
+
+-- Before 
+EXPLAIN ANALYZE
+SELECT *
+FROM users u
+JOIN bookings b ON u.id = b.user_id
+WHERE u.email = 'john@example.com';
+
 -- Index on users.email for faster lookup (e.g., login)
 CREATE INDEX idx_users_email ON users(email);
 
@@ -12,3 +20,13 @@ CREATE INDEX idx_bookings_booking_date ON bookings(booking_date);
 
 -- Index on properties.name for search or ordering
 CREATE INDEX idx_properties_name ON properties(name);
+
+
+
+
+-- After
+EXPLAIN ANALYZE
+SELECT *
+FROM users u
+JOIN bookings b ON u.id = b.user_id
+WHERE u.email = 'john@example.com';
