@@ -14,3 +14,10 @@ WHERE id IN (
     GROUP BY property_id
     HAVING AVG(rating) > 4.0
 );
+
+
+EXPLAIN ANALYZE
+SELECT *
+FROM users u
+JOIN bookings b ON u.id = b.user_id
+WHERE u.email = 'john@example.com';
